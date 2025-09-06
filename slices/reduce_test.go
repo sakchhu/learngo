@@ -1,6 +1,9 @@
 package slices
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestReduce(t *testing.T) {
 
@@ -16,4 +19,11 @@ func TestReduce(t *testing.T) {
 		}
 	})
 
+}
+
+func ExampleReduce() {
+	numbers := []int{1, 121, 10, -100}
+	reduced := Reduce(numbers)
+	fmt.Println(reduced)
+	// Output: 32
 }
