@@ -10,3 +10,13 @@ func Reduce(numbers []int) int {
 
 	return sum
 }
+
+func ReduceAll(slices ...[]int) []int {
+	var sums []int
+
+	for _, slice := range slices {
+		sums = append(sums, Reduce(slice))
+	}
+
+	return sums
+}
