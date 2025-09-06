@@ -37,6 +37,26 @@ func TestReduceAll(t *testing.T) {
 	})
 }
 
+func TestReduceAllTails(t *testing.T) {
+
+	checkSums := func(t testing.TB, want, got []int) {
+		t.Helper()
+		if !slices.Equal(want, got) {
+			t.Errorf("want %v got %v", want, got)
+		}
+	}
+	t.Run("reduce the tails of multiple slices", func(t *testing.T) {
+		got := ReduceAllTails([]int{-1, 1, 20}, []int{30, -40, 10})
+		want := []int{21, -30}
+		checkSums(t, want, got)
+	})
+	t.Run("reduce the tails of empty slices safely", func(t *testing.T) {
+		got := ReduceAllTails([]int{}, []int{})
+		want := []int{0, 0}
+		checkSums(t, want, got)
+	})
+}
+
 func ExampleReduce() {
 	numbers := []int{1, 121, 10, -100}
 	reduced := Reduce(numbers)
@@ -48,4 +68,10 @@ func ExampleReduceAll() {
 	reducedList := ReduceAll([]int{30, -10, 20}, []int{400, 89, 11})
 	fmt.Println(reducedList)
 	// Output: [40 500]
+}
+
+func ExampleReduceAllTails() {
+	reducedList := ReduceAllTails([]int{20, -1}, []int{43, 200, 30})
+	fmt.Println(reducedList)
+	// Output: [-1 230]
 }
