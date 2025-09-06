@@ -18,6 +18,8 @@ func Hello(name string, lang string) string {
 	return greetingPrefix(lang) + name
 }
 
+// greetingPrefix returns the specified HelloPrefix for the requested language.
+// It defaults to English in case the requested language has not been configured.
 func greetingPrefix(lang string) (prefix string) {
 	switch lang {
 	case spanish:

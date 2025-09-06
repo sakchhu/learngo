@@ -1,6 +1,9 @@
 package helloworld
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestHello(t *testing.T) {
 	t.Run("say 'Hello, Club' when empty string is supplied", func(t *testing.T) {
@@ -40,4 +43,9 @@ func assertCorrectMessage(t testing.TB, got, want string) {
 	if got != want {
 		t.Errorf("got %q want %q", got, want)
 	}
+}
+
+func ExampleHello() {
+	fmt.Println(Hello("Documentation reader!", nepali))
+	// Output: Namaste, Documentation reader!
 }
